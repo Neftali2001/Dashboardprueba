@@ -12,7 +12,7 @@ async function listInvoices() {
   return data;
 }
 
-// 👇 Este bloque es el que te falta
+
 export async function GET() {
   try {
     const data = await listInvoices();
