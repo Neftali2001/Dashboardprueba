@@ -1,25 +1,28 @@
 import { Revenue } from './definitions';
 
 export const formatCurrency = (amount: number) => {
-  return (amount / 100).toLocaleString('en-US', {
+  return (amount / 100).toLocaleString('es-MX', {
     style: 'currency',
-    currency: 'USD',
+    currency: 'MXN',
   });
 };
 
+
 export const formatDateToLocal = (
   dateStr: string,
-  locale: string = 'en-US',
+  locale: string = 'es-MX', // Español de México
 ) => {
   const date = new Date(dateStr);
   const options: Intl.DateTimeFormatOptions = {
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric',
+    weekday: 'short',  // Muestra el día de la semana en formato corto, como 'lun.' para lunes
+    day: 'numeric',    // Muestra el día del mes en formato numérico
+    month: 'short',    // Muestra el mes en formato corto, como 'ene' para enero
+    year: 'numeric',   // Muestra el año en formato numérico
   };
   const formatter = new Intl.DateTimeFormat(locale, options);
   return formatter.format(date);
 };
+
 
 export const generateYAxis = (revenue: Revenue[]) => {
   // Calculate what labels we need to display on the y-axis
