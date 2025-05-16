@@ -8,6 +8,7 @@ import { authenticate } from '@/app/lib/actions';
 import { useSearchParams } from 'next/navigation';
 import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
 import { ArrowRightIcon } from '@heroicons/react/20/solid';
+import { FaGoogle, FaFacebook } from 'react-icons/fa';
 import Link from 'next/link';
 
 export default function LoginForm() {
@@ -21,7 +22,7 @@ export default function LoginForm() {
 
   return (
     <form action={formAction} className="rounded-lg bg-gray-50 p-6 space-y-6 shadow">
-      <div className="space-y-2 text-center">
+      <div className="text-center space-y-2">
         <h1 className="text-2xl font-semibold text-gray-900">Iniciar Sesión</h1>
         <p className="text-sm text-gray-500">Por favor inicie sesión para continuar</p>
       </div>
@@ -58,7 +59,11 @@ export default function LoginForm() {
 
       <input type="hidden" name="redirectTo" value={callbackUrl} />
 
-      <Button type="submit" className="w-full bg-emerald-700 hover:bg-emerald-800 text-white" aria-disabled={isPending}>
+      <Button
+        type="submit"
+        className="w-full bg-emerald-700 hover:bg-emerald-800 text-white"
+        aria-disabled={isPending}
+      >
         Iniciar sesión
         <ArrowRightIcon className="ml-2 h-4 w-4" />
       </Button>
@@ -70,7 +75,26 @@ export default function LoginForm() {
         </div>
       )}
 
-      <p className="text-center text-sm text-gray-500">
+      {/* Divider */}
+      <div className="flex items-center justify-between">
+        <hr className="w-full border-gray-300" />
+        <span className="mx-2 text-gray-400 text-sm">o</span>
+        <hr className="w-full border-gray-300" />
+      </div>
+
+      {/* Social Buttons */}
+      <div className="flex flex-col gap-3">
+        <Button variant="outline" className="w-full flex items-center justify-center gap-2">
+          <FaGoogle className="text-red-500" />
+          Iniciar con Google
+        </Button>
+        <Button variant="outline" className="w-full flex items-center justify-center gap-2">
+          <FaFacebook className="text-blue-600" />
+          Iniciar con Facebook
+        </Button>
+      </div>
+
+      <p className="text-sm text-center text-gray-500">
         ¿No tienes cuenta?{' '}
         <Link href="/signup" className="text-emerald-700 hover:underline">
           Regístrate
@@ -79,6 +103,7 @@ export default function LoginForm() {
     </form>
   );
 }
+
 
 
 

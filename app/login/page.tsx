@@ -1,6 +1,8 @@
 import AcmeLogo from '@/app/ui/acme-logo';
 import LoginForm from '@/app/ui/login-form';
+
 import { Suspense } from 'react';
+
 
 export default function LoginPage() {
   return (
@@ -24,7 +26,7 @@ export default function LoginPage() {
           <h2 className="text-3xl font-bold mb-4">Buenos trabajos</h2>
           <p className="text-lg mb-2">estan esperandote</p>
           <p className="text-lg font-semibold mb-4">Registrate ahora!</p>
-          <img src="/Img6.png" alt="Woman" className="w-1/2" />
+          <img src="/Img6.png" alt="compu" className="w-1/2" />
         </div>
       </div>
     </main>
