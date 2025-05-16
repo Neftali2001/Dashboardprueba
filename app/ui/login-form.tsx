@@ -33,7 +33,7 @@ export default function LoginForm() {
             id="email"
             name="email"
             type="email"
-            placeholder="you@example.com"
+            placeholder="tu@ejemplo.com"
             required
           />
         </div>
