@@ -14,9 +14,16 @@ export default function Page() {
       <div className="mt-4 flex grow flex-col gap-4 md:flex-row">
         <div className="flex flex-col justify-center gap-6 rounded-lg bg-gray-50 px-6 py-10 md:w-2/5 md:px-20">
         
-        <div
-          className="relative w-0 h-0 border-l-[15px] border-r-[15px] border-b-[26px] border-l-transparent border-r-transparent border-b-black"
-           />
+ <div
+  className="relative w-0 h-0 
+             border-l-[15px] border-r-[15px] border-b-[26px] 
+             border-l-transparent border-r-transparent border-primaryGreen 
+             animate-spinRight 
+             transition-all duration-300 
+             hover:border-l-[18px] hover:border-r-[18px] hover:border-b-[31px]"
+/>
+
+
           <p  className={`${lusitana.className} text-xl text-gray-800 md:text-3xl md:leading-normal`}>
             <strong>Bienvenido a Dashboard.</strong> Copacabana
           </p>
@@ -38,7 +45,7 @@ export default function Page() {
           alt="Screenshots of the dashboard project showing desktop version"
       />
         <Image
-        src="/Img2.jpg"
+        src="/Img7.png"
         width={560}
         height={620}
         className="block md:hidden"
