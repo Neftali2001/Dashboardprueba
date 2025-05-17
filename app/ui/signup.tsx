@@ -52,7 +52,7 @@ export default function SignupForm() {
             id="email"
             name="email"
             type="email"
-            placeholder="you@example.com"
+            placeholder="tu@ejemplo.com"
             value={form.email}
             onChange={handleChange}
             required
