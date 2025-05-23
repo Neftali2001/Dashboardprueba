@@ -21,7 +21,7 @@ export default function SignupForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Aquí puedes agregar la lógica para enviar datos a tu backend
+    //agregar la lógica para enviar datos a tu backend
     console.log('Signup:', form);
   };
 
@@ -91,7 +91,7 @@ export default function SignupForm() {
         Registrarse
       </Button>
 
-      <div className="flex items-center justify-between">
+      {/* <div className="flex items-center justify-between">
         <hr className="w-full border-gray-300" />
         <span className="mx-2 text-gray-400 text-sm">o</span>
         <hr className="w-full border-gray-300" />
@@ -106,7 +106,7 @@ export default function SignupForm() {
           <FaFacebook className="text-blue-600" />
           Registrarse con Facebook
         </Button>
-      </div>
+      </div> */}
 
       <p className="text-sm text-center text-gray-500">
         ¿Ya tienes una cuenta?{' '}

@@ -76,14 +76,14 @@ export default function LoginForm() {
       )}
 
       {/* Divider */}
-      <div className="flex items-center justify-between">
+      {/* <div className="flex items-center justify-between">
         <hr className="w-full border-gray-300" />
         <span className="mx-2 text-gray-400 text-sm">o</span>
         <hr className="w-full border-gray-300" />
-      </div>
+      </div> */}
 
       {/* Social Buttons */}
-      <div className="flex flex-col gap-3">
+      {/* <div className="flex flex-col gap-3">
         <Button variant="outline" className="w-full flex items-center justify-center gap-2">
           <FaGoogle className="text-red-500" />
           Iniciar con Google
@@ -92,7 +92,7 @@ export default function LoginForm() {
           <FaFacebook className="text-blue-600" />
           Iniciar con Facebook
         </Button>
-      </div>
+      </div> */}
 
       <p className="text-sm text-center text-gray-500">
         ¿No tienes cuenta?{' '}
