@@ -34,7 +34,7 @@ export default function LoginForm() {
             id="email"
             name="email"
             type="email"
-            placeholder="tu@ejemplo.com"
+            placeholder="Correo"
             required
           />
         </div>
@@ -94,12 +94,12 @@ export default function LoginForm() {
         </Button>
       </div> */}
 
-      <p className="text-sm text-center text-gray-500">
+      {/* <p className="text-sm text-center text-gray-500">
         ¿No tienes cuenta?{' '}
         <Link href="/signup" className="text-emerald-700 hover:underline">
           Regístrate
         </Link>
-      </p>
+      </p> */}
     </form>
   );
 }
