@@ -9,6 +9,22 @@ const users = [
   },
 ];
 
+
+/**********************************************************************/
+const habitaciones = [
+  {
+    id: 'd6e15727-9fe1-4961-8c5b-ea44a9bd81aa',
+    name: 'Evil Rabbit',
+    email: 'evil@rabbit.com',
+    image_url: '/customers/evil-rabbit.png',
+  },
+  
+];
+
+/**********************************************************************/
+
+
+
 const customers = [
   {
     id: 'd6e15727-9fe1-4961-8c5b-ea44a9bd81aa',
@@ -144,4 +160,4 @@ const revenue = [
   { month: 'Dec', revenue: 4800 },
 ];
 
-export { users, customers, invoices, revenue };
+export { users, customers, invoices, revenue ,habitaciones};

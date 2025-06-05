@@ -16,23 +16,23 @@ import {
 } from '@heroicons/react/24/outline';
 import { Button } from '@/app/ui/button';
 // DEBERÁS CREAR ESTA ACCIÓN Y AJUSTAR EL TIPO State SI ES NECESARIO
-import { createInvoice, State } // Asume que has creado una acción createRoom similar a createInvoice
+import { createInvoice, State2 } // Asume que has creado una acción createRoom similar a createInvoice
 from '@/app/lib/actions'; // La ruta a tus acciones, ajústala si es necesario
 import { useActionState } from 'react';
 import { useState, ChangeEvent, FormEvent } from 'react';
 
 // Podrías definir tipos para las opciones de select si vienen de la BD
-// export type RoomTypeOption = { id: string; name: string; };
+export type RoomTypeOption = { id: string; name: string; };
 // export type ViewTypeOption = { id: string; name: string; };
 
 // Props del formulario (ejemplo: si pasas tipos de habitación o vistas)
-// interface AddRoomFormProps {
-//   roomTypes: RoomTypeOption[];
+interface AddRoomFormProps {
+  habitaciones: RoomTypeOption[];
 //   viewTypes: ViewTypeOption[];
-// }
+}
 
-export default function AddRoomForm(/* { roomTypes, viewTypes }: AddRoomFormProps */) {
-  const initialState: State = { message: null, errors: {} };
+export default function AddRoomForm( { habitaciones}: AddRoomFormProps ) {
+  const initialState: State2 = { message: null, errors: {} };
   // USA LA NUEVA ACCIÓN createRoom
   const [state, formAction] = useActionState(createInvoice, initialState);
 
@@ -466,6 +466,90 @@ export default function AddRoomForm(/* { roomTypes, viewTypes }: AddRoomFormProp
                 )}
             </div>
         </fieldset>
+
+        {/* Tarifa Inicial */}
+<div className="mb-6 mt-8 border-t pt-6">
+  <h3 className="text-md mb-4 font-semibold">Tarifa Inicial</h3>
+
+  <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+    <div>
+      <label htmlFor="initialPrice" className="mb-2 block text-sm font-medium">Precio por noche (MXN)</label>
+      <input
+        id="initialPrice"
+        name="initialPrice"
+        type="number"
+        step="0.01"
+        min="0"
+        placeholder="Ej: 1500.00"
+        required
+        className="block w-full rounded-md border border-gray-200 py-2 px-3 text-sm outline-2 placeholder:text-gray-400"
+      />
+      {/* Manejo de errores */}
+      <div id="initialPrice-error" aria-live="polite" aria-atomic="true">
+        {/* @ts-ignore */}
+        {state.errors?.initialPrice && state.errors.initialPrice.map((error: string) => (
+          <p className="mt-2 text-sm text-red-500" key={error}>{error}</p>
+        ))}
+      </div>
+    </div>
+
+    <div>
+      <label htmlFor="tariffType" className="mb-2 block text-sm font-medium">Tipo de Tarifa</label>
+      <select
+        id="tariffType"
+        name="tariffType"
+        required
+        className="block w-full rounded-md border border-gray-200 py-2 px-3 text-sm outline-2"
+      >
+       <option value="" disabled>Seleccionar tipo</option>
+        <option value="Regular">Regular</option>
+        <option value="Fin de semana">Fin de semana</option>
+        <option value="Temporada alta">Temporada alta</option>
+      </select>
+      <div id="tariffType-error" aria-live="polite" aria-atomic="true">
+        {/* @ts-ignore */}
+        {state.errors?.tariffType && state.errors.tariffType.map((error: string) => (
+          <p className="mt-2 text-sm text-red-500" key={error}>{error}</p>
+        ))}
+      </div>
+    </div>
+
+    <div>
+      <label htmlFor="startDate" className="mb-2 block text-sm font-medium">Fecha de inicio</label>
+      <input
+        id="startDate"
+        name="startDate"
+        type="date"
+        required
+        className="block w-full rounded-md border border-gray-200 py-2 px-3 text-sm outline-2"
+      />
+      <div id="startDate-error" aria-live="polite" aria-atomic="true">
+        {/* @ts-ignore */}
+        {state.errors?.startDate && state.errors.startDate.map((error: string) => (
+          <p className="mt-2 text-sm text-red-500" key={error}>{error}</p>
+        ))}
+      </div>
+    </div>
+
+    <div>
+      <label htmlFor="endDate" className="mb-2 block text-sm font-medium">Fecha de fin</label>
+      <input
+        id="endDate"
+        name="endDate"
+        type="date"
+        required
+        className="block w-full rounded-md border border-gray-200 py-2 px-3 text-sm outline-2"
+      />
+      <div id="endDate-error" aria-live="polite" aria-atomic="true">
+        {/* @ts-ignore */}
+        {state.errors?.endDate && state.errors.endDate.map((error: string) => (
+          <p className="mt-2 text-sm text-red-500" key={error}>{error}</p>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
 
         {/* Mensaje general de error del formulario */}
         {state.message && (

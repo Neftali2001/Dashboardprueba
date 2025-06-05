@@ -1,5 +1,8 @@
 import postgres from 'postgres';
 import {
+  /**********************************************************************/
+  habitacionesField,
+  /**********************************************************************/
   CustomerField,
   CustomersTableType,
   InvoiceForm,
@@ -183,6 +186,30 @@ export async function fetchCustomers() {
     throw new Error('Failed to fetch all customers.');
   }
 }
+
+
+
+/**********************************************************************/
+export async function fetchHabitaciones() {
+  try {
+    const habitaciones = await sql<habitacionesField[]>`
+      SELECT
+        id,
+        name
+      FROM customers
+      ORDER BY name ASC
+    `;
+
+    return habitaciones;
+  } catch (err) {
+    console.error('Database Error:', err);
+    throw new Error('Failed to fetch all customers.');
+  }
+}
+/**********************************************************************/
+
+
+
 
 export async function fetchFilteredCustomers(query: string) {
   try {

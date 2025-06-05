@@ -1,7 +1,7 @@
 import Pagination from '@/app/ui/invoices/pagination';
 import Search from '@/app/ui/search';
 import Table from '@/app/ui/habitaciones/table';
-import { CreateInvoice } from '@/app/ui/habitaciones/buttons';
+import { CreateHabitaciones } from '@/app/ui/habitaciones/buttons';
 import { lusitana } from '@/app/ui/fonts';
 import { Suspense } from 'react';
 import { InvoicesTableSkeleton } from '@/app/ui/skeletons';
@@ -24,8 +24,8 @@ export default async function Page(props: {
         <h1 className={`${lusitana.className} text-2xl`}>Habitaciones</h1>
       </div>
       <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
-        <Search placeholder="Buscando facturas..." />
-        <CreateInvoice />
+        <Search placeholder="Buscando habitaciones..." />
+        <CreateHabitaciones />
       </div>
       <Suspense key={query + currentPage} fallback={<InvoicesTableSkeleton />}>
         <Table query={query} currentPage={currentPage} />

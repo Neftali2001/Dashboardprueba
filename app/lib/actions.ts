@@ -23,6 +23,28 @@ const FormSchema = z.object({
   date: z.string(),
 });
 
+
+
+
+/**********************************************************************/
+
+// export const CustomerSchema = z.object({
+//   firstName: z.string().min(1, 'Nombre requerido'),
+//   lastName: z.string().min(1, 'Apellido requerido'),
+//   email: z.string().email('Correo no válido'),
+//   phone: z.string().min(7, 'Teléfono no válido'),
+//   documentId: z.string().min(1, 'Documento requerido'),
+//   address: z.string().optional(),
+// });
+
+/**********************************************************************/
+
+
+
+
+
+
+
 // Crear un esquema para la creación de facturas (omitimos id y date)
 const CreateInvoice = FormSchema.omit({ id: true, date: true });
 export type State = {
@@ -34,44 +56,38 @@ export type State = {
   message?: string | null;
 };
 
-// export async function createInvoice(prevState: State, formData: FormData) {
-//   // Validate form using Zod
-//   const validatedFields = CreateInvoice.safeParse({
-//     customerId: formData.get('customerId'),
-//     amount: formData.get('amount'),
-//     status: formData.get('status'),
-//   });
- 
-//   // If form validation fails, return errors early. Otherwise, continue.
-//   if (!validatedFields.success) {
-//     return {
-//       errors: validatedFields.error.flatten().fieldErrors,
-//       message: 'Missing Fields. Failed to Create Invoice.',
-//     };
-//   }
- 
-//   // Prepare data for insertion into the database
-//   const { customerId, amount, status } = validatedFields.data;
-//   const amountInCents = amount * 100;
-//   const date = new Date().toISOString().split('T')[0];
- 
-//   // Insert data into the database
-//   try {
-//     await sql`
-//       INSERT INTO invoices (customer_id, amount, status, date)
-//       VALUES (${customerId}, ${amountInCents}, ${status}, ${date})
-//     `;
-//   } catch (error) {
-//     // If a database error occurs, return a more specific error.
-//     return {
-//       message: 'Database Error: Failed to Create Invoice.',
-//     };
-//   }
- 
-//   // Revalidate the cache for the invoices page and redirect the user.
-//   revalidatePath('/dashboard/invoices');
-//   redirect('/dashboard/invoices');
-// }
+
+/**********************************************************************/
+const Createhabitaciones = FormSchema.omit({ id: true, date: true });
+export type State2 = {
+  errors?: {
+    customerId?: string[];
+    amount?: string[];
+    status?: string[];
+  };
+  message?: string | null;
+};
+/**********************************************************************/
+
+
+const CreateCustomer = FormSchema.omit({ id: true, date: true });
+export type State3 = {
+  errors?: {
+    firstName?: string[];
+    lastName?: string[];
+    email?: string[];
+    phone?: string[];
+    documentId?: string[];
+    address?: string[];
+  };
+  message?: string | null;
+};
+
+
+
+/**********************************************************************/
+
+
 
 export async function createInvoice(prevState: State, formData: FormData) {
   // Validate form using Zod
@@ -113,7 +129,85 @@ export async function createInvoice(prevState: State, formData: FormData) {
 }
 
 
-
+/**********************************************************************/
+export async function createhabitaciones(prevState: State, formData: FormData) {
+  // Validate form using Zod
+  const validatedFields = Createhabitaciones.safeParse({
+    customerId: formData.get('customerId'),
+    amount: formData.get('amount'),
+    status: formData.get('status'),
+  });
+ 
+  // If form validation fails, return errors early. Otherwise, continue.
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: 'Missing Fields. Failed to Create Invoice.',
+    };
+  }
+ 
+  // Prepare data for insertion into the database
+  const { customerId, amount, status } = validatedFields.data;
+  const amountInCents = amount * 100;
+  const date = new Date().toISOString().split('T')[0];
+ 
+  // Insert data into the database
+  try {
+    await sql`
+      INSERT INTO invoices (customer_id, amount, status, date)
+      VALUES (${customerId}, ${amountInCents}, ${status}, ${date})
+    `;
+  } catch (error) {
+    // If a database error occurs, return a more specific error.
+    return {
+      message: 'Database Error: Failed to Create Invoice.',
+    };
+  }
+ 
+  // Revalidate the cache for the invoices page and redirect the user.
+  revalidatePath('/dashboard/habitaciones');
+  redirect('/dashboard/habitaciones');
+}
+/**********************************************************************/
+export async function createCustomer(prevState: State, formData: FormData) {
+  // Validate form using Zod
+  const validatedFields = Createhabitaciones.safeParse({
+    customerId: formData.get('customerId'),
+    amount: formData.get('amount'),
+    status: formData.get('status'),
+  });
+ 
+  // If form validation fails, return errors early. Otherwise, continue.
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: 'Missing Fields. Failed to Create Invoice.',
+    };
+  }
+ 
+  // Prepare data for insertion into the database
+  const { customerId, amount, status } = validatedFields.data;
+  const amountInCents = amount * 100;
+  const date = new Date().toISOString().split('T')[0];
+ 
+  // Insert data into the database
+  try {
+    await sql`
+      INSERT INTO invoices (customer_id, amount, status, date)
+      VALUES (${customerId}, ${amountInCents}, ${status}, ${date})
+    `;
+  } catch (error) {
+    // If a database error occurs, return a more specific error.
+    return {
+      message: 'Database Error: Failed to Create Invoice.',
+    };
+  }
+ 
+  // Revalidate the cache for the invoices page and redirect the user.
+  revalidatePath('/dashboard/habitaciones');
+  redirect('/dashboard/habitaciones');
+}
+/**********************************************************************/
 
 const UpdateInvoice = FormSchema.omit({ id: true, date: true });
 

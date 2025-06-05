@@ -18,11 +18,11 @@ const links = [
     href: '/dashboard/habitaciones',
     icon:BedDouble ,
   },
-  {
-    name: 'Facturas',
-    href: '/dashboard/invoices',
-    icon: DocumentDuplicateIcon,
-  },
+  // {
+  //   name: 'Facturas',
+  //   href: '/dashboard/invoices',
+  //   icon: DocumentDuplicateIcon,
+  // },
   { name: 'Clientes', href: '/dashboard/customers', icon: UserGroupIcon },
 ];
 
